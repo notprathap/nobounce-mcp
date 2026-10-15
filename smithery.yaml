@@ -1,0 +1,19 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - nobounceApiKey
+    properties:
+      nobounceApiKey:
+        type: string
+        description: Your NoBounce API key from https://nobounceapi.com/register (100 free validations/month)
+  commandFunction:
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['index.js'],
+      env: {
+        NOBOUNCE_API_KEY: config.nobounceApiKey
+      }
+    })

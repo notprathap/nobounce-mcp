@@ -1,0 +1,33 @@
+{
+  "name": "nobounce-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for NoBounce Email Validation & Bulk CSV Verification API (nobounceapi.com)",
+  "main": "index.js",
+  "bin": {
+    "nobounce-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js --self-test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "email-validation",
+    "email-verification",
+    "disposable-email",
+    "bulk-email-verifier",
+    "nobounce",
+    "claude",
+    "cursor"
+  ],
+  "homepage": "https://nobounceapi.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notprathap/nobounce-mcp.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
