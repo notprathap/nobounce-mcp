@@ -1,5 +1,7 @@
 # NoBounce Email Validation MCP Server (`nobounce-mcp`)
 
+[![notprathap/nobounce-mcp MCP server](https://glama.ai/mcp/servers/notprathap/nobounce-mcp/badges/score.svg)](https://glama.ai/mcp/servers/notprathap/nobounce-mcp)
+
 Official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server for **[NoBounce Email Validation & Bulk CSV Verification API](https://nobounceapi.com)**.
 
 Allows AI assistants (Claude Desktop, Cursor, Windsurf, Cline, etc.) to verify single email addresses and bulk email lists in real time:
