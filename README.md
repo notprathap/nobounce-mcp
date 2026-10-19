@@ -2,7 +2,7 @@
 
 [![Glama Score](https://glama.ai/mcp/servers/notprathap/nobounce-mcp/badges/score.svg)](https://glama.ai/mcp/servers/notprathap/nobounce-mcp)
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/notprathap/nobounce-mcp)
-[![M8ven Trust](https://m8ven.ai/badge/mcp/notprathap/nobounce-mcp)](https://m8ven.ai/mcp/notprathap/nobounce-mcp?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/notprathap-nobounce-mcp-1tgtkc?v=474657fcd1b099402b459589e98520fc)](https://m8ven.ai/mcp/notprathap-nobounce-mcp-1tgtkc?s=readme)
 
 Official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server for **[NoBounce Email Validation & Bulk CSV Verification API](https://nobounceapi.com)**.
 
