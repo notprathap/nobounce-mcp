@@ -1,5 +1,6 @@
 # NoBounce Email Validation MCP Server (`nobounce-mcp`)
 
+[![mcptry](https://mcptry.com/badge/io.github.notprathap/nobounce-mcp.svg)](https://mcptry.com/servers/io.github.notprathap/nobounce-mcp)
 [![Glama Score](https://glama.ai/mcp/servers/notprathap/nobounce-mcp/badges/score.svg)](https://glama.ai/mcp/servers/notprathap/nobounce-mcp)
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/notprathap/nobounce-mcp)
 [![M8ven Score](https://m8ven.ai/badge/mcp/notprathap-nobounce-mcp-1tgtkc?v=474657fcd1b099402b459589e98520fc)](https://m8ven.ai/mcp/notprathap-nobounce-mcp-1tgtkc?s=readme)
