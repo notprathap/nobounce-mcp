@@ -12,8 +12,16 @@ const API_KEY = process.env.NOBOUNCE_API_KEY || '';
 const TOOLS = [
   {
     name: 'validate_email',
+    title: 'Validate Single Email Address',
     description:
       'Validate a single email address for RFC 5322 syntax, DNS MX records, 5,000+ disposable email providers, role-based accounts (admin@, support@), free email providers, domain typo suggestions, and optional SMTP mailbox handshake.',
+    annotations: {
+      title: 'Validate Single Email Address',
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true
+    },
     inputSchema: {
       type: 'object',
       properties: {
@@ -36,8 +44,16 @@ const TOOLS = [
   },
   {
     name: 'validate_emails_bulk',
+    title: 'Validate Bulk Email Addresses',
     description:
       'Validate up to 1,000 email addresses in a single batch call. Checks syntax, MX records, disposable domains, role accounts, free providers, and typo suggestions with automatic partial-quota handling.',
+    annotations: {
+      title: 'Validate Bulk Email Addresses',
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true
+    },
     inputSchema: {
       type: 'object',
       properties: {
@@ -69,7 +85,7 @@ async function handleToolCall(name, args = {}) {
       content: [
         {
           type: 'text',
-          text: 'Missing NoBounce API key. Set NOBOUNCE_API_KEY in your MCP server config or get a free 100-credit/mo API key at https://nobounceapi.com/register'
+          text: 'Missing NoBounce API key. Set NOBOUNCE_API_KEY in your MCP server config or get a free 100-credit/mo API key at https://nobounceapi.com/signup'
         }
       ]
     };
@@ -167,7 +183,7 @@ rl.on('line', async (line) => {
       },
       serverInfo: {
         name: 'nobounce-mcp',
-        version: '1.0.0'
+        version: '1.0.1'
       }
     });
   }

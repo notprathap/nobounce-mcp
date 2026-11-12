@@ -3,11 +3,19 @@
   "name": "io.github.notprathap/nobounce-mcp",
   "title": "NoBounce Email Validation",
   "description": "Real-time single and bulk email validation (syntax, MX, 5,000+ disposable domains, SMTP).",
+  "websiteUrl": "https://nobounceapi.com",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/notprathap/nobounce-mcp/main/logo.png",
+      "mimeType": "image/png",
+      "sizes": ["400x400"]
+    }
+  ],
   "repository": {
     "url": "https://github.com/notprathap/nobounce-mcp",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "remotes": [
     {
       "type": "streamable-http",
@@ -15,7 +23,7 @@
       "headers": [
         {
           "name": "X-API-Key",
-          "description": "NoBounce API key (get a free key at https://nobounceapi.com/register)",
+          "description": "NoBounce API key (get a free key at https://nobounceapi.com/signup)",
           "isRequired": true,
           "isSecret": true
         }
