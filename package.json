@@ -1,7 +1,7 @@
 {
   "name": "nobounce-mcp",
-  "version": "1.0.1",
-  "description": "Model Context Protocol (MCP) server for NoBounce Email Validation & Bulk CSV Verification API (nobounceapi.com)",
+  "version": "1.1.0",
+  "description": "Model Context Protocol (MCP) server for NoBounce Email Validation, Employee Email Finder & Domain Intelligence API (nobounceapi.com)",
   "main": "index.js",
   "bin": {
     "nobounce-mcp": "./index.js"
@@ -15,6 +15,8 @@
     "model-context-protocol",
     "email-validation",
     "email-verification",
+    "email-finder",
+    "domain-intelligence",
     "disposable-email",
     "bulk-email-verifier",
     "nobounce",

@@ -74,6 +74,82 @@ const TOOLS = [
       },
       required: ['emails']
     }
+  },
+  {
+    name: 'find_email',
+    title: 'Find Employee Work Email Address',
+    description:
+      "Find and verify a person's B2B work email address given their name (first_name + last_name or full_name) and company domain. Generates corporate email permutations and verifies them via MX, Microsoft 365, Gravatar, and live SMTP handshake. Uses your shared NoBounce credit pool (0 credits charged if not_found).",
+    annotations: {
+      title: 'Find Employee Work Email Address',
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true
+    },
+    inputSchema: {
+      type: 'object',
+      properties: {
+        first_name: {
+          type: 'string',
+          description: "Person's first name (e.g. 'Prathap')"
+        },
+        last_name: {
+          type: 'string',
+          description: "Person's last name (e.g. 'Chandran')"
+        },
+        full_name: {
+          type: 'string',
+          description: "Optional full name if first_name and last_name are combined (e.g. 'Prathap Chandran')"
+        },
+        domain: {
+          type: 'string',
+          description: "Company domain or website URL (e.g. 'nobounceapi.com')"
+        },
+        smtp_check: {
+          type: 'boolean',
+          description: 'Verify candidate permutations via live mailbox handshake (default: true)',
+          default: true
+        },
+        api_key: {
+          type: 'string',
+          description: 'Optional override for NOBOUNCE_API_KEY environment variable'
+        }
+      },
+      required: ['domain']
+    }
+  },
+  {
+    name: 'get_domain_intelligence',
+    title: 'Get Domain & Email Infrastructure Intelligence',
+    description:
+      "Inspect a company domain's email infrastructure: MX records, email provider (Google Workspace, Microsoft 365, Zoho Mail, Proofpoint, Mimecast, etc.), SPF/DMARC security policies, disposable/free flags, catch-all status, and deliverability grade.",
+    annotations: {
+      title: 'Get Domain & Email Infrastructure Intelligence',
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: true
+    },
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain: {
+          type: 'string',
+          description: "Company domain, website URL, or email address (e.g. 'nobounceapi.com')"
+        },
+        check_catch_all: {
+          type: 'boolean',
+          description: 'Probe whether the domain is a catch-all mail server (default: true)',
+          default: true
+        },
+        api_key: {
+          type: 'string',
+          description: 'Optional override for NOBOUNCE_API_KEY environment variable'
+        }
+      },
+      required: ['domain']
+    }
   }
 ];
 
@@ -121,6 +197,47 @@ async function handleToolCall(name, args = {}) {
         body: JSON.stringify({
           emails: Array.isArray(args.emails) ? args.emails : [],
           smtp_check: Boolean(args.smtp_check)
+        })
+      });
+      const data = await resp.json();
+      return {
+        isError: !resp.ok,
+        content: [{ type: 'text', text: JSON.stringify(data, null, 2) }]
+      };
+    }
+
+    if (name === 'find_email') {
+      const resp = await fetch(`${BASE_URL}/api/find-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': key
+        },
+        body: JSON.stringify({
+          first_name: args.first_name || '',
+          last_name: args.last_name || '',
+          full_name: args.full_name || '',
+          domain: args.domain || '',
+          smtp_check: args.smtp_check !== false
+        })
+      });
+      const data = await resp.json();
+      return {
+        isError: !resp.ok,
+        content: [{ type: 'text', text: JSON.stringify(data, null, 2) }]
+      };
+    }
+
+    if (name === 'get_domain_intelligence') {
+      const resp = await fetch(`${BASE_URL}/api/domain`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': key
+        },
+        body: JSON.stringify({
+          domain: args.domain || '',
+          check_catch_all: args.check_catch_all !== false
         })
       });
       const data = await resp.json();
@@ -183,7 +300,7 @@ rl.on('line', async (line) => {
       },
       serverInfo: {
         name: 'nobounce-mcp',
-        version: '1.0.1'
+        version: '1.1.0'
       }
     });
   }
